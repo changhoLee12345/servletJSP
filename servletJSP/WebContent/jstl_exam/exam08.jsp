@@ -3,4 +3,4 @@
 <%@ taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core" %>
 
 <h3>exam08.jsp</h3>
-${param["id"] } / ${param["pwd"] }
+${param.id } / ${param["pwd"] }

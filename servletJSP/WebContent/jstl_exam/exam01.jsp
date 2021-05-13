@@ -33,7 +33,8 @@ request.setAttribute("bookOne", book);
 <br>
 
 <c:set var="name">Tobey</c:set>
-<c:out value="${name }" /> + ${name }
+<c:out value="${name }" />
++ ${name }
 <br>
 
 <%
@@ -42,7 +43,8 @@ request.setAttribute("bookTwo", book2);
 %>
 
 <c:set var="title">${bookTwo.title }</c:set>
-<c:out value="${title }" /> + ${title } + ${bookTwo.title }
+<c:out value="${title }" />
++ ${title } + ${bookTwo.title }
 <br>
 
 <c:set var="author"><%=book2.getAuthor()%></c:set>
