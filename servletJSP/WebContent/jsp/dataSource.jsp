@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3>${pageContext.servletConfig.servletContext.contextPath }</h3>
 	<%
 	// JNDI 서버 객체 생성	
 	InitialContext ic = new InitialContext();
@@ -30,5 +31,6 @@
 	stmt.close();
 	conn.close();
 	%>
+
 </body>
 </html>
