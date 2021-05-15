@@ -10,7 +10,7 @@
 
 <body>
     <h2>Hello World!!</h2>
-    <jsp:forward page="netInfo" />
+    <jsp:forward page="hello" />
 </body>
 
 </html>
