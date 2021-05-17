@@ -1,5 +1,13 @@
 package com.dev.controller;
 
-public class MemberSearchController {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class MemberSearchController implements Controller {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+
+	}
 
 }

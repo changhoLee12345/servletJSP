@@ -1,5 +1,13 @@
 package com.dev.controller;
 
-public class MemberDeleteController {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class MemberDeleteController implements Controller {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+
+	}
 
 }

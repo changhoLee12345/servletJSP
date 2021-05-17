@@ -48,6 +48,19 @@
 	</filter-mapping>
 
 	<servlet>
+		<servlet-name>front</servlet-name>
+		<servlet-class>com.dev.controller.FrontController</servlet-class>
+		<init-param>
+			<param-name>charset</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>front</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>servletConfigTest</servlet-name>
 		<servlet-class>com.edu.test.ServletConfigTestServlet</servlet-class>
 		<init-param>
@@ -87,7 +100,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>addInfo</servlet-name>
-		<url-pattern>/test/*</url-pattern>
+		<url-pattern>/addInfo</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -96,7 +109,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>hello</servlet-name>
-		<url-pattern>/hello/*</url-pattern>
+		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 
 
