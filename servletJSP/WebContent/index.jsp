@@ -10,11 +10,11 @@
 
 <body>
 	<h2>첫 페이지</h2>
-	<a href="memberView/memberInsert.jsp">회원정보생성</a>
-	<a href="memberView/memberSearch.jsp">회원정보검색</a>
-	<a href="memberView/memberUpdate.jsp">회원정보수정</a>
-	<a href="memberView/memberDelete.jsp">회원정보삭제</a>
-	<a href="memberView/memberList.jsp">모든회원정보보기</a>
+	<a href="memberView/memberInsert.jsp">회원정보생성</a><br>
+	<a href="memberView/memberSearch.jsp">회원정보검색</a><br>
+	<a href="memberView/memberUpdate.jsp">회원정보수정</a><br>
+	<a href="memberView/memberDelete.jsp">회원정보삭제</a><br>
+	<a href="memberView/memberList.jsp">모든회원정보보기</a><br>
 </body>
 
 </html>
