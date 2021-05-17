@@ -36,15 +36,6 @@ public class HelloRequestServlet extends HttpServlet {
 		out.print("<h2>" + request.getPathInfo() + "</h2>");
 		out.print("<h2>" + request.getPathTranslated() + "</h2>");
 
-		ServletInputStream input = request.getInputStream();
-		int len = request.getContentLength();
-		byte[] buf = new byte[len];
-		input.readLine(buf, 0, len);
-
-		String str = new String(buf, "UTF-8");
-		out.print("<h2>" + str + "</h2>");
-		System.out.println(str);
-
 		out.print("<h2>" + request.getContentLength() + "</h2>");
 
 		out.print("<h2>" + request.getContentType() + "</h2>");
