@@ -31,10 +31,12 @@ public class MemberSearchController implements Controller {
 		if (member == null) {
 			request.setAttribute("result", "검색된 정보가 없습니다");
 		}
+
 		request.setAttribute("member", member);
 		if (job.equals("search")) {
-			path = "resultView/memberSearchOutput.jsp";
+			path = "memberResult/memberSearchOutput.jsp";
 		}
+
 		HttpUtil.forward(request, response, path);
 
 	}

@@ -9,14 +9,16 @@
 </head>
 <body>
 	<h3>검색결과</h3>
-	<c:choose>
-		<c:when test="${result ne null }">
-			<p>${result }</p>
-		</c:when>
-		<c:otherwise>
-			<h3>${member.id }/${member.passwd }/${member.name }/${member.mail }</h3>
-		</c:otherwise>
-	</c:choose>
+	<%
+	String result = (String) request.getAttribute("result");
+	if (result != null) {
+		out.print("<p>" + result + "</p>");
+	} else {
+	%>
+	<h3>${member.id }/${member.name }/${member.passwd }/${member.mail }</h3>
+	<%
+	}
+	%>
 	<jsp:forward page="home.jsp"></jsp:forward>
 </body>
 </html>
