@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -65,7 +67,7 @@ public class MemberDAO {
 	// 입력
 	public void memberInsert(MemberVO member) {
 		conn = connect();
-		String sql = "insert into member values(?,?,?,?)";
+		String sql = "insert into member(id, name, passwd, mail) values(?,?,?,?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -144,5 +146,31 @@ public class MemberDAO {
 		} finally {
 			close();
 		}
+	}
+
+	// 리스트
+	public List<MemberVO> memberList() {
+		conn = connect();
+		String sql = "select id, name, passwd, mail from member order by 1";
+		List<MemberVO> list = new ArrayList<>();
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				MemberVO member = new MemberVO();
+				member.setId(rs.getString("id"));
+				member.setMail(rs.getString("mail"));
+				member.setName(rs.getString("name"));
+				member.setPasswd(rs.getString("passwd"));
+				list.add(member);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return list;
 	}
 }

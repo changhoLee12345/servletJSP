@@ -1,5 +1,7 @@
 package com.dev.service;
 
+import java.util.List;
+
 import com.dev.dao.MemberDAO;
 import com.dev.vo.MemberVO;
 
@@ -28,8 +30,12 @@ public class MemberService {
 	public void memberUpdate(MemberVO member) {
 		dao.memberUpdate(member);
 	}
-	
+
 	public void memberDelete(String id) {
 		dao.memberDelete(id);
+	}
+
+	public List<MemberVO> memberList() {
+		return dao.memberList();
 	}
 }
