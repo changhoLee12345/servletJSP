@@ -27,6 +27,7 @@ public class MemberSearchController implements Controller {
 
 		MemberService service = MemberService.getInstance();
 		MemberVO member = service.memberSearch(id);
+		System.out.println(member);
 
 		if (member == null) {
 			request.setAttribute("result", "검색된 정보가 없습니다");

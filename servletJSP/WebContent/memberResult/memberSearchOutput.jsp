@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h3>검색결과</h3>
+	<p>${member }</p>
 	<%
 	String result = (String) request.getAttribute("result");
 	if (result != null) {
