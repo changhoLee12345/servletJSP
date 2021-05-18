@@ -2,6 +2,7 @@ package com.dev.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.naming.InitialContext;
@@ -15,18 +16,19 @@ public class MemberDAO {
 
 	Connection conn;
 	PreparedStatement psmt;
+	ResultSet rs;
 
 	private MemberDAO() {
 	}
 
-	public MemberDAO getInstance() {
+	public static MemberDAO getInstance() {
 		return dao;
 	}
 
 	public Connection connect() {
 		try {
 			InitialContext ic = new InitialContext();
-			DataSource ds = (DataSource) ic.lookup("java:comp/env/java/myoarcle");
+			DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/myoracle");
 			conn = ds.getConnection();
 
 		} catch (NamingException | SQLException e) {
@@ -37,6 +39,20 @@ public class MemberDAO {
 	}
 
 	public void close() {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (psmt != null) {
+			try {
+				psmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		if (conn != null) {
 			try {
 				conn.close();
@@ -48,6 +64,46 @@ public class MemberDAO {
 
 	// 입력
 	public void memberInsert(MemberVO member) {
+		conn = connect();
+		String sql = "insert into member values(?,?,?,?)";
 
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, member.getId());
+			psmt.setString(2, member.getName());
+			psmt.setString(3, member.getPasswd());
+			psmt.setString(4, member.getMail());
+
+			int r = psmt.executeUpdate();
+			System.out.println(r + " 건 입력.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
+
+	// 조회
+	public MemberVO memberSearch(String id) {
+		conn = connect();
+		String sql = "select * from member where id = ?";
+		MemberVO member = new MemberVO();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				member.setId(rs.getString("id"));
+				member.setMail(rs.getString("mail"));
+				member.setName(rs.getString("name"));
+				member.setPasswd(rs.getString("passwd"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return member;
 	}
 }

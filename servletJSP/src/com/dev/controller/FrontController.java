@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+
+		charset = config.getInitParameter("charset");
 
 		list = new HashMap<String, Controller>();
 		list.put("/memberDelete.do", new MemberDeleteController());
@@ -33,6 +36,7 @@ public class FrontController extends HttpServlet {
 		String url = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String path = url.substring(contextPath.length());
+		System.out.println(path);
 		Controller subControl = list.get(path);
 		subControl.execute(req, resp);
 

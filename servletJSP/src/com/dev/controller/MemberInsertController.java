@@ -3,8 +3,8 @@ package com.dev.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dev.service.MemberService;
 import com.dev.vo.MemberVO;
-import com.edu.biz.MemberService;
 
 public class MemberInsertController implements Controller {
 
@@ -30,6 +30,7 @@ public class MemberInsertController implements Controller {
 		MemberService service = MemberService.getInstance();
 		service.memberInsert(member);
 
+		request.setAttribute("id", id);
 		HttpUtil.forward(request, response, "memberResult/memberInsertOutput.jsp");
 	}
 
