@@ -9,17 +9,8 @@
 </head>
 <body>
 	<h3>검색결과</h3>
-	<p>${member }</p>
-	<%
-	String result = (String) request.getAttribute("result");
-	if (result != null) {
-		out.print("<p>" + result + "</p>");
-	} else {
-	%>
-	<h3>${member.id }/${member.name }/${member.passwd }/${member.mail }</h3>
-	<%
-	}
-	%>
-	<jsp:forward page="home.jsp"></jsp:forward>
+	<c:if test="${!empty result }">${result }</c:if>
+	<c:if test="${!empty member }">${member.id }/${member.name }/${member.passwd }/${member.mail }</c:if>
+	<jsp:include page="home.jsp"></jsp:include>
 </body>
 </html>

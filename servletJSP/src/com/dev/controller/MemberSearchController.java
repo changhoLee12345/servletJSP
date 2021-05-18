@@ -17,6 +17,10 @@ public class MemberSearchController implements Controller {
 
 		if (job.equals("search")) {
 			path = "memberView/memberSearch.jsp";
+		} else if (job.equals("update")) {
+			path = "memberView/memberUpdate.jsp";
+		} else if (job.equals("delete")) {
+			path = "memberView/memberDelete.jsp";
 		}
 
 		if (id.isEmpty()) {
@@ -34,6 +38,7 @@ public class MemberSearchController implements Controller {
 		}
 
 		request.setAttribute("member", member);
+
 		if (job.equals("search")) {
 			path = "memberResult/memberSearchOutput.jsp";
 		}

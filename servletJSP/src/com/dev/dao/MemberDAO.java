@@ -106,4 +106,43 @@ public class MemberDAO {
 		}
 		return member;
 	}
+
+	// 수정
+	public void memberUpdate(MemberVO member) {
+		conn = connect();
+		String sql = "update member set passwd=?, name=?, mail=? where id=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, member.getPasswd());
+			psmt.setString(2, member.getName());
+			psmt.setString(3, member.getMail());
+			psmt.setString(4, member.getId());
+			int r = psmt.executeUpdate();
+			System.out.println(r + "건 변경.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
+
+	// 삭제
+	public void memberDelete(String id) {
+		conn = connect();
+		String sql = "delete from member where id=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			int r = psmt.executeUpdate();
+			System.out.println(r + "건 삭제.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
 }
