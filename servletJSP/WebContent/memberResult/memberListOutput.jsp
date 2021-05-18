@@ -1,7 +1,6 @@
-<%@page import="com.dev.vo.MemberVO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -12,39 +11,31 @@
 
 <body>
     <h3>회원정보</h3>
-    <%
-	List<MemberVO> list = (List<MemberVO>) request.getAttribute("list");
-
-	if (list != null) {
-	%>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Mail</th>
-            <th>Passwd</th>
-        </tr>
-        <%
-		for (MemberVO mem : list) {
-		%>
-        <tr>
-            <td><%=mem.getId()%></td>
-            <td><%=mem.getName()%></td>
-            <td><%=mem.getMail()%></td>
-            <td><%=mem.getPasswd()%></td>
-        </tr>
-        <%
-		}
-		%>
-    </table>
-    <h3></h3>
-    <%
-	} else {
-	out.print("<h3>등록된 회원정보가 없습니다.</h3>");
-	}
-	%>
-	
-	<%@ include file="home.jsp" %>
+    <c:choose>
+        <c:when test="${not empty list }">
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Mail</th>
+                    <th>Passwd</th>
+                </tr>
+                <c:forEach items="${list }" var="item">
+                    <tr>
+                        <td>${item.id }</td>
+                        <td>${item.name }</td>
+                        <td>${item.mail }</td>
+                        <td>${item.passwd }</td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <h3></h3>
+        </c:when>
+        <c:otherwise>
+            <h3>정보가 없습니다.</h3>
+        </c:otherwise>
+    </c:choose>
+    <jsp:include page="home.jsp" />
 </body>
 
 </html>
