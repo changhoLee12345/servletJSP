@@ -7,7 +7,7 @@ request.setCharacterEncoding("UTF-8");
 <jsp:useBean id="member" class="com.edu.beans.Member"></jsp:useBean>
 <jsp:setProperty property="*" name="member"></jsp:setProperty>
 <%
-MemberService service = new MemberService();
+MemberService service = MemberService.getInstance();
 service.memberInsert(member);
 
 RequestDispatcher rd = request.getRequestDispatcher("memberOutput.jsp");
