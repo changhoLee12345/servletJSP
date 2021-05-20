@@ -1,5 +1,7 @@
 package com.dev.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,15 +17,30 @@ public class MemberJsonController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		
+		response.setContentType("text/html;charset=UTF-8");
 
 		MemberService service = MemberService.getInstance();
 		List<MemberVO> list = service.memberList();
 
 		JSONArray ary = new JSONArray();
-		JSONObject obj = new JSONObject();
+		for (MemberVO vo : list) {
+			JSONObject obj = new JSONObject();
+			obj.put("id", vo.getId());
+			obj.put("name", vo.getName());
+			obj.put("ps", vo.getPasswd());
+			obj.put("mail", vo.getMail());
 
-		System.out.println(JSONArray.toJSONString(list));
+			ary.add(obj);
+
+		}
+
+		try {
+			PrintWriter out = response.getWriter();
+			out.print(ary);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
