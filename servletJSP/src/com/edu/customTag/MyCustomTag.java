@@ -5,6 +5,8 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 public class MyCustomTag extends TagSupport {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public int doEndTag() throws JspException {
 		// TODO Auto-generated method stub
