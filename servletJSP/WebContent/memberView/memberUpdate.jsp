@@ -11,8 +11,9 @@
 	${error }
 
 	<form action="<%=request.getContextPath() %>/memberSearch.do" method="post">
-		ID: <input type="text" name="id" /> <input type="hidden" name="job"
-			value="update" /> <input type="submit" value="Search" />
+		ID: <input type="text" name="id" />
+		 <input type="hidden" name="job" value="update" /> 
+		 <input type="submit" value="Search" />
 	</form>
 
 	<%
