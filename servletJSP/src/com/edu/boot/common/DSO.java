@@ -1,11 +1,7 @@
 package com.edu.boot.common;
 
-import java.sql.Connection;
 import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Properties;
 
 import oracle.jdbc.OracleConnection;
@@ -13,7 +9,10 @@ import oracle.jdbc.pool.OracleDataSource;
 
 public class DSO {
 
-	final static String DB_URL = "jdbc:oracle:thin:@db202112142040_medium?TNS_ADMIN=/home/leadon/Downloads/Wallet_DB202112142040";
+//	ubuntu.
+//	final static String DB_URL = "jdbc:oracle:thin:@db202112142040_medium?TNS_ADMIN=/home/leadon/Downloads/Wallet_DB202112142040";
+//  pc
+	final static String DB_URL = "jdbc:oracle:thin:@db202112142040_medium?TNS_ADMIN=D:/workspace/Wallet_DB202112142040";
 	final static String DB_USER = "hr";
 	final static String DB_PASSWORD = "H1q2w3e4r5tR";
 
@@ -34,13 +33,13 @@ public class DSO {
 			conn = (OracleConnection) ods.getConnection();
 
 			// Get the JDBC driver name and version
-//			DatabaseMetaData dbmd = conn.getMetaData();
-//			System.out.println("Driver Name: " + dbmd.getDriverName());
-//			System.out.println("Driver Version: " + dbmd.getDriverVersion());
+			DatabaseMetaData dbmd = conn.getMetaData();
+			System.out.println("Driver Name: " + dbmd.getDriverName());
+			System.out.println("Driver Version: " + dbmd.getDriverVersion());
 			// Print some connection properties
-//			System.out.println("Default Row Prefetch Value is: " + conn.getDefaultRowPrefetch());
-//			System.out.println("Database Username is: " + conn.getUserName());
-//			System.out.println();
+			System.out.println("Default Row Prefetch Value is: " + conn.getDefaultRowPrefetch());
+			System.out.println("Database Username is: " + conn.getUserName());
+			System.out.println();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
