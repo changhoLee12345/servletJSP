@@ -27,6 +27,7 @@ public class FrontController extends HttpServlet {
 		list.put("/memberSearch.do", new MemberSearchController());
 		list.put("/memberUpdate.do", new MemberUpdateController());
 		list.put("/memberJson.do", new MemberJsonController());
+		list.put("/spec.do", new SpecialController());
 
 	}
 
@@ -38,6 +39,7 @@ public class FrontController extends HttpServlet {
 		String contextPath = req.getContextPath();
 		String path = url.substring(contextPath.length());
 		System.out.println(path);
+
 		Controller subControl = list.get(path);
 		subControl.execute(req, resp);
 
