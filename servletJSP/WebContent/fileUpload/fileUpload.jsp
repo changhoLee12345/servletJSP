@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<form action="../FileUploadServ" method="post" enctype="multipart/form-data">
+	<form action="../ServletParam" method="post" enctype="multipart/form-data">
 		<input type="text" name="title" value="파일제목"><br>
 		<input type="text" name="content" value="파일내용"><br>
 		<input type="file" name="img"><br>
