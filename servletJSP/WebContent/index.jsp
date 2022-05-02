@@ -4,8 +4,8 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
 
 <body>
@@ -16,8 +16,8 @@
 	<a href="memberView/memberDelete.jsp">회원정보삭제</a><br>
 	<a href="<%=request.getContextPath() %>/memberList.do">모든회원정보보기</a><br>
 	<a href="<%=request.getContextPath() %>/spec.do">spec</a>
-	
-	
+
+
 </body>
 
 </html>
