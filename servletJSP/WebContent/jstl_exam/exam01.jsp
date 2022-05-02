@@ -17,24 +17,24 @@ BookBean book = new BookBean("The Secret", "Byrne, Rhonda", "Atria Books");
 request.setAttribute("bookOne", book);
 %>
 
+<c:set var="book" value="${bookOne }" />
+<c:out value="${bookOne }" />
+<br>
+
 <c:set var="title" value="${bookOne.title }" />
-<c:out value="${title }" />
-+ ${title }
+<c:out value="${title }" /> + ${title }
 <br>
 
 <c:set var="author" value="${bookOne.author }" />
-<c:out value="${author }" />
-+ ${author }
+<c:out value="${author }" /> + ${author }
 <br>
 
 <c:set var="publisher" value="${bookOne.publisher }" />
-<c:out value="${publisher }" />
-- ${publisher }
+<c:out value="${publisher }" /> - ${publisher }
 <br>
 
 <c:set var="name">Tobey</c:set>
-<c:out value="${name }" />
-+ ${name }
+<c:out value="${name }" /> + ${name }
 <br>
 
 <%
@@ -43,8 +43,7 @@ request.setAttribute("bookTwo", book2);
 %>
 
 <c:set var="title">${bookTwo.title }</c:set>
-<c:out value="${title }" />
-+ ${title } + ${bookTwo.title }
+<c:out value="${title }" /> + ${title } + ${bookTwo.title }
 <br>
 
 <c:set var="author"><%=book2.getAuthor()%></c:set>

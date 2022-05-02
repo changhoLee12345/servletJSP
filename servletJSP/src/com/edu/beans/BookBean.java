@@ -38,4 +38,9 @@ public class BookBean {
 		this.publisher = publisher;
 	}
 
+	@Override
+	public String toString() {
+		return "BookBean [title=" + title + ", author=" + author + ", publisher=" + publisher + "]";
+	}
+
 }
