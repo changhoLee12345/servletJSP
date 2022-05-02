@@ -46,6 +46,11 @@ public class FileUploadServlet extends HttpServlet {
 			Collection<Part> parts = request.getParts();
 
 			for (Part part : parts) {
+				System.out.println("-------------");
+				for (String header : part.getHeaderNames()) {
+					System.out.println("header=> " + header);
+				}
+				System.out.println("-------------");
 				System.out.printf("파라미터 명 : %s, contentType :  %s,  size : %d bytes \n", part.getName(),
 						part.getContentType(), part.getSize());
 
@@ -55,6 +60,7 @@ public class FileUploadServlet extends HttpServlet {
 					if (part.getSize() > 0) {
 						System.out.printf("업로드 파일 명 : %s  \n", fileName);
 						part.write(filepath + File.separator + fileName);
+						System.out.println(part.getSubmittedFileName());
 						part.delete();
 					}
 
