@@ -20,13 +20,9 @@
 	if (session.isNew() || session.getAttribute("id") == null) {
 	%>
 	<form action="example10.jsp" method="post">
-		<!--  -->
 		ID: <input type="text" name="id"><br>
-		<!--  -->
 		PW: <input type="password" name="pwd"><br>
-		<!--  -->
 		<input type="submit" value="LogIn">
-		<!--  -->
 	</form>
 	<%
 	} else {

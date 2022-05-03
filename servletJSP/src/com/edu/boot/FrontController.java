@@ -20,15 +20,20 @@ public class FrontController extends HttpServlet {
 	private HashMap<String, Service> map = new HashMap<>();
 
 	@Override
+	public void init(ServletConfig config) throws ServletException {
+
+		map.put("/login.do", new LoginService());
+		map.put("/main.do", new MainService());
+	}
+
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("service call()");
 		request.setCharacterEncoding("UTF-8");
 		String contextPath = request.getContextPath();
 		String uri = request.getRequestURI();
 		String path = uri.substring(contextPath.length());
-		System.out.println(path);
 
 		Service service = map.get(path);
 		String viewPage = service.run(request, response);
@@ -36,14 +41,6 @@ public class FrontController extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 
-	}
-
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-
-		System.out.println("init call()");
-		map.put("/login.do", new LoginService());
-		map.put("/main.do", new MainService());
 	}
 
 }

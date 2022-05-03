@@ -9,7 +9,7 @@
 <body>
 	<h3>PageContext Page</h3>
 	<%
-	out.print(request.getAttribute("data").toString());
+	  out.print(request.getAttribute("data").toString());
 	%>
 </body>
 </html>
