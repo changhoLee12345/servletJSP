@@ -1,5 +1,8 @@
 package com.dev.dao;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -35,14 +39,20 @@ public class MemberDAO {
 			conn = ds.getConnection();
 
 		} catch (NamingException | SQLException e) {
-//			e.printStackTrace();
-			System.out.println("jdbc driver connect.");
+
+			Properties prop = new Properties();
+			String path = null;
+			path = MemberDAO.class.getResource("/com/dev/database.properties").getPath();
+			String url = prop.getProperty("url");
+			String id = prop.getProperty("user");
+			String pass = prop.getProperty("passwd");
+
 			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
-			} catch (ClassNotFoundException e1) {
-				e1.printStackTrace();
-			} catch (SQLException e1) {
+				path = URLDecoder.decode(path, "UTF-8");
+				prop.load(new FileReader(path));
+				Class.forName(prop.getProperty("driver"));
+				conn = DriverManager.getConnection(url, id, pass);
+			} catch (ClassNotFoundException | SQLException | IOException e1) {
 				e1.printStackTrace();
 			}
 		}
