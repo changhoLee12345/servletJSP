@@ -1,6 +1,7 @@
 package com.dev.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +35,16 @@ public class MemberDAO {
 			conn = ds.getConnection();
 
 		} catch (NamingException | SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("jdbc driver connect.");
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+			} catch (ClassNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		}
 		return conn;
 
@@ -67,7 +77,7 @@ public class MemberDAO {
 	// 입력
 	public void memberInsert(MemberVO member) {
 		conn = connect();
-		String sql = "insert into member(id, name, passwd, mail) values(?,?,?,?)";
+		String sql = "insert into member(id, name, passwd, email) values(?,?,?,?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -96,7 +106,7 @@ public class MemberDAO {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				member.setId(rs.getString("id"));
-				member.setMail(rs.getString("mail"));
+				member.setMail(rs.getString("email"));
 				member.setName(rs.getString("name"));
 				member.setPasswd(rs.getString("passwd"));
 
@@ -112,7 +122,7 @@ public class MemberDAO {
 	// 수정
 	public void memberUpdate(MemberVO member) {
 		conn = connect();
-		String sql = "update member set passwd=?, name=?, mail=? where id=?";
+		String sql = "update member set passwd=?, name=?, email=? where id=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -153,7 +163,7 @@ public class MemberDAO {
 	// 리스트
 	public List<MemberVO> memberList() {
 		conn = connect();
-		String sql = "select id, name, passwd, mail from member order by 1";
+		String sql = "select id, name, passwd, email from member order by 1";
 		List<MemberVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -161,7 +171,7 @@ public class MemberDAO {
 			while (rs.next()) {
 				MemberVO member = new MemberVO();
 				member.setId(rs.getString("id"));
-				member.setMail(rs.getString("mail"));
+				member.setMail(rs.getString("email"));
 				member.setName(rs.getString("name"));
 				member.setPasswd(rs.getString("passwd"));
 				list.add(member);
