@@ -2,6 +2,7 @@ package fileupload;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Collection;
 
@@ -49,6 +50,7 @@ public class FileUploadServlet extends HttpServlet {
 				System.out.println("-------------");
 				for (String header : part.getHeaderNames()) {
 					System.out.println("header=> " + header);
+					System.out.println("content-type=> " + part.getContentType());
 				}
 				System.out.println("-------------");
 				System.out.printf("파라미터 명 : %s, contentType :  %s,  size : %d bytes \n", part.getName(),
@@ -59,8 +61,8 @@ public class FileUploadServlet extends HttpServlet {
 
 					if (part.getSize() > 0) {
 						System.out.printf("업로드 파일 명 : %s  \n", fileName);
+						System.out.println("submittedFileName: " + part.getSubmittedFileName());
 						part.write(filepath + File.separator + fileName);
-						System.out.println(part.getSubmittedFileName());
 						part.delete();
 					}
 

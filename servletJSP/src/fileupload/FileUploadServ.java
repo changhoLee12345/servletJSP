@@ -48,8 +48,8 @@ public class FileUploadServ extends HttpServlet {
 
 			String title = multi.getParameter("title");
 			String content = multi.getParameter("content");
-			String fileName = multi.getFilesystemName("img");
-			String oriName = multi.getOriginalFileName("img");
+			String fileName = multi.getFilesystemName("imgProfile");
+			String oriName = multi.getOriginalFileName("imgProfile");
 
 			System.out.printf("title %s, content %s, fileName %s, origName %s", title, content, fileName, oriName);
 			System.out.println();

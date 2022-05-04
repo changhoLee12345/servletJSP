@@ -9,10 +9,10 @@
 </head>
 
 <body>
-    <form action="<%= application.getContextPath() %>/fileUpload" method="post" enctype="multipart/form-data">
-        제목 : <input type="text" name="title"><br>
-        내용 : <input type="text" name="content"><br>
-        파일 설명 : <input type="text" name="description"><br>
+    <form action="<%= application.getContextPath() %>/FileUploadServ" method="post" enctype="multipart/form-data">
+        제목 : <input type="text" name="title" value="title test"><br>
+        내용 : <input type="text" name="content" value="content test"><br>
+        파일 설명 : <input type="text" name="description" value="file desc"><br>
         파일1 : <input type="file" name="imgProfile"><br>
         <!-- 파일2 : <input type="file" name="file2"><br> -->
         <input type="submit" value="전송">
