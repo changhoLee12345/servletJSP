@@ -34,14 +34,14 @@ public class FileUploadServ extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		// multipart request => request, save_dir, max_size, encoding, rename policy;
-		String saveDir = getServletContext().getRealPath("upload");
-		String encoding = "UTF-8";
-		int maxSize = 1024 * 1024 * 5;
-
 		boolean isMulti = ServletFileUpload.isMultipartContent(request);
 
 		if (isMulti) {
+
+			// multipart request => request, save_dir, max_size, encoding, rename policy;
+			String saveDir = getServletContext().getRealPath("upload");
+			String encoding = "UTF-8";
+			int maxSize = 1024 * 1024 * 5;
 
 			MultipartRequest multi = new MultipartRequest(request, saveDir, maxSize, encoding,
 					new DefaultFileRenamePolicy());
@@ -56,7 +56,13 @@ public class FileUploadServ extends HttpServlet {
 			out.println("<h3>업로드성공.</h3>");
 
 		} else {
-			out.println("<h3>업로드실패.</h3>");
+			
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			System.out.printf("title %s, content %s ", title, content);
+			System.out.println();
+			out.println("<h3>요청정보성공.</h3>");
 
 		}
 
