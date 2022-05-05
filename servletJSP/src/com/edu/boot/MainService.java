@@ -17,8 +17,7 @@ public class MainService implements Service {
 
 		System.out.println(session);
 
-		if (session.isNew() || session == null || session.getAttribute("id") == null
-				|| session.getAttribute("id").equals("")) {
+		if (session.isNew() || session == null || session.getAttribute("id") == null || session.getAttribute("id").equals("")) {
 			return "login.jsp";
 
 		} else {
