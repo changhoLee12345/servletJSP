@@ -16,18 +16,18 @@
 
     <script>
         var frm = document.getElementById('frm');
-        frm.onsubmit = function (e) {
+        frm.addEventListener('submit', function (e) {
+
             e.preventDefault();
 
-            var formData = new FormData(frm);
-            for (let val of formData.entries()) {
-                console.log(val);
-            }
-            console.log(formDataToEncoding(formData))
+            var formData = new FormData();
+
             let titleVal = document.forms.frm.title.value;
             let contentVal = document.forms.frm.content.value;
-            // formData.append('title', document.forms.frm.title.value);
-            // formData.append('content', document.forms.frm.content.value);
+            formData.append('title', document.forms.frm.title.value);
+            formData.append('content', document.forms.frm.content.value);
+
+            // formData.toEncoding();
 
             // var ajax = new XMLHttpRequest();
             // ajax.open('post', '../FileUploadServ');
@@ -39,13 +39,21 @@
                     headers: {
                         'Content-type': 'application/x-www-form-urlencoded'
                     },
-                    body: formDataToEncoding(formData)
+                    body: formData.toEncoding()
                 })
                 .then(result => result.text())
                 .then(result => {
                     console.log(result)
                 })
                 .catch(error => console.log(error))
+        });
+
+        FormData.prototype.toEncoding = function () {
+            let ary = [];
+            for (let keyVal of this.entries()) {
+                ary.push(keyVal[0] + '=' + keyVal[1]);
+            }
+            return ary.join('&');
         }
 
         function formDataToEncoding(frmData) {
