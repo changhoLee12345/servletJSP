@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri= "http://java.sun.com/jsp/jstl/fmt" %>
 
 <fmt:setLocale value="ko" />
-<fmt:bundle basename="com.edu.bundle.msg" >
+<fmt:bundle basename="com.edu.bundle.msg">
   <fmt:message key="id" />
   <fmt:message key="greeting" />
 </fmt:bundle>

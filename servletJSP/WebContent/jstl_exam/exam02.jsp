@@ -9,7 +9,9 @@
 
 <c:set target="<%=book %>" property="title" value="The Secret" />
 <%=book.getTitle()%><br>
-<h3><c:out value="${b.title }" /></h3>
+<h3>
+	<c:out value="${b.title }" />
+</h3>
 
 <c:set var="b" value="<%=book %>" />
 <c:set target="${b }" property="author" value="Byrne, Rhoda" />

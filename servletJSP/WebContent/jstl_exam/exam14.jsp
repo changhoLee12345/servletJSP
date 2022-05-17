@@ -7,11 +7,12 @@
 Korea:<fmt:formatDate value="${now }" type="both" dateStyle="full" timeStyle="full"></fmt:formatDate><br>
 
 <fmt:timeZone value="en_US">
-USA:<fmt:formatDate value="${now }" type="both" dateStyle="full" timeStyle="full" /><br>
+	USA:
+	<fmt:formatDate value="${now }" type="both" dateStyle="full" timeStyle="full" /><br>
 </fmt:timeZone>
 
 <fmt:timeZone value="ja_jp">
-JAPAN: <fmt:formatDate value="${now }" type="both" dateStyle="full" timeStyle="full"></fmt:formatDate>
+	JAPAN: <fmt:formatDate value="${now }" type="both" dateStyle="full" timeStyle="full"></fmt:formatDate>
 </fmt:timeZone>
 
 <hr>

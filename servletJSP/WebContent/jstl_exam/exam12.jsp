@@ -9,19 +9,15 @@
 <br>
 <fmt:formatNumber type="number" maxIntegerDigits="3" value="${balance }"></fmt:formatNumber>
 <br>
-<fmt:formatNumber type="number" maxFractionDigits="3"
-	value="${balance }"></fmt:formatNumber>
+<fmt:formatNumber type="number" maxFractionDigits="3" value="${balance }"></fmt:formatNumber>
 <br>
 <fmt:formatNumber type="number" groupingUsed="false" value="${balance }"></fmt:formatNumber>
 <br>
-<fmt:formatNumber type="percent" maxIntegerDigits="3"
-	value="${balance }"></fmt:formatNumber>
+<fmt:formatNumber type="percent" maxIntegerDigits="3" value="${balance }"></fmt:formatNumber>
 <br>
-<fmt:formatNumber type="percent" minFractionDigits="10"
-	value="${balance }"></fmt:formatNumber>
+<fmt:formatNumber type="percent" minFractionDigits="10" value="${balance }"></fmt:formatNumber>
 <br>
-<fmt:formatNumber type="percent" maxIntegerDigits="3"
-	value="${banacle }"></fmt:formatNumber>
+<fmt:formatNumber type="percent" maxIntegerDigits="3" value="${banacle }"></fmt:formatNumber>
 <br>
 <fmt:formatNumber type="number" pattern="###.###E0" value="${balance }"></fmt:formatNumber>
 

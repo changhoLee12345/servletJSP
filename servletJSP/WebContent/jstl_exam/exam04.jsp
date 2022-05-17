@@ -7,10 +7,10 @@
 <c:out value="${num }" />
 은
 <c:if test="${num gt 60 }">
-합격입니다.
+	합격입니다.
 </c:if>
 <c:if test="${num lt 60 }">
-불합격입니다.
+	불합격입니다.
 </c:if>
 <br>
 점수

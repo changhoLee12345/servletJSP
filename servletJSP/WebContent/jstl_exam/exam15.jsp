@@ -4,13 +4,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <sql:query var="rs" dataSource="jdbc/myoracle">
-select * from employees
+	select * from employees
 </sql:query>
 
 <table border="1">
 	<tr>
 		<c:forEach var="columnName" items="${rs.columnNames }">
-			<th><c:out value="${columnName }" /></th>
+			<th>
+				<c:out value="${columnName }" />
+			</th>
 		</c:forEach>
 	</tr>
 </table>

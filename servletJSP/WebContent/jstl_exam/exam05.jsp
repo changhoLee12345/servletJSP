@@ -30,11 +30,9 @@ String[] bookCode = { "소설", "역사", "인문", "정치", "미술", "종교"
 </table>
 <hr>
 <c:forEach var="k" begin="1" end="10" step="2">
-  ${k }
+	${k }
 </c:forEach>
 <br>
-<c:forTokens items="소설/역사/인문/정치/미술/종교/여행/과학/만화/건강" delims="/"
-	var="token">
-  ${token }
+<c:forTokens items="소설/역사/인문/정치/미술/종교/여행/과학/만화/건강" delims="/" var="token">
+	${token }
 </c:forTokens>
-

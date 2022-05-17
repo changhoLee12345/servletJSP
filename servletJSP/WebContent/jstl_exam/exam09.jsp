@@ -6,6 +6,6 @@
 Parameter: ${param.name } <br>
 
 <form action="exam09.jsp" method="post">
-  이름: <input type="text" name="name" >
-  <input type="submit" value="전송" >
+  이름: <input type="text" name="name">
+  <input type="submit" value="전송">
 </form>
