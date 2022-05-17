@@ -17,3 +17,6 @@
 <c:set target="${b }" property="author" value="Byrne, Rhoda" />
 <c:out value="${b.author }" /><br>
 "${b.author }"
+<br>
+
+<a href="examList.jsp">리스트</a>

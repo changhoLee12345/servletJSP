@@ -16,3 +16,5 @@ Korea:<fmt:formatDate value="${now }" type="both" dateStyle="full" timeStyle="fu
 </fmt:timeZone>
 
 <hr>
+
+<a href="examList.jsp">리스트</a>

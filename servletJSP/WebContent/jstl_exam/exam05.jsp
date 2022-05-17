@@ -36,3 +36,5 @@ String[] bookCode = { "소설", "역사", "인문", "정치", "미술", "종교"
 <c:forTokens items="소설/역사/인문/정치/미술/종교/여행/과학/만화/건강" delims="/" var="token">
 	${token }
 </c:forTokens>
+
+<a href="examList.jsp">리스트</a>

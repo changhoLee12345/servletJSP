@@ -23,3 +23,5 @@
 	<c:when test="${num>=60 }">D Point</c:when>
 	<c:otherwise>F Point</c:otherwise>
 </c:choose>
+
+<a href="examList.jsp">리스트</a>

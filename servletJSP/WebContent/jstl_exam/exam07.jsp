@@ -8,3 +8,5 @@
 </c:url>
 
 <c:redirect url="${page }"></c:redirect>
+
+<a href="examList.jsp">리스트</a>

@@ -16,3 +16,5 @@
 		</c:forEach>
 	</tr>
 </table>
+
+<a href="examList.jsp">리스트</a>

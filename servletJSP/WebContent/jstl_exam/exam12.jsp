@@ -30,3 +30,5 @@
 <fmt:parseNumber value="1,234.56" pattern="0,000.000" var="num1"></fmt:parseNumber>
 <fmt:parseNumber value="123" var="num2"></fmt:parseNumber>
 ${num1 + num2 }
+
+<a href="examList.jsp">리스트</a>

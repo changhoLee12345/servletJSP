@@ -1,24 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.edu.beans.BookBean"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="name" value="Amy" />
 <c:out value="${name }" />
 <br>
-${name }
+<h3>${name }</h3>
 
 <c:remove var="name" />
 <c:out value="${name }" />
 <br>
 <hr>
 <%
-BookBean book = new BookBean("The Secret", "Byrne, Rhonda", "Atria Books");
-request.setAttribute("bookOne", book);
+	BookBean book = new BookBean("The Secret", "Byrne, Rhonda", "Atria Books");
+	request.setAttribute("bookOne", book);
 %>
 
 <c:set var="book" value="${bookOne }" />
 <c:out value="${bookOne }" />
+<br>
+<c:out value="${book }" />
 <br>
 
 <c:set var="title" value="${bookOne.title }" />
@@ -49,3 +50,5 @@ request.setAttribute("bookTwo", book2);
 <c:set var="author"><%=book2.getAuthor()%></c:set>
 <c:out value="${author }"></c:out>
 <br>
+
+<a href="examList.jsp">리스트</a>

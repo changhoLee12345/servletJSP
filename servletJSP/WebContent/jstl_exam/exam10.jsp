@@ -7,3 +7,5 @@
   <fmt:message key="id" />
   <fmt:message key="greeting" />
 </fmt:bundle>
+
+<a href="examList.jsp">리스트</a>

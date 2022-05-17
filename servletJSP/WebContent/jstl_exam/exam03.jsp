@@ -12,3 +12,5 @@ String str = request.getParameter("msg");
 	%>
 </c:catch>
 <c:out value="${e }" />
+<br>
+<a href="examList.jsp">리스트</a>
