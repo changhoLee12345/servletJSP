@@ -1,107 +1,73 @@
 package fileupload;
 
 import java.io.File;
-import java.util.Iterator;
-import java.util.List;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-
+@MultipartConfig(location = "C:\\temp", maxFileSize = -1, maxRequestSize = -1, fileSizeThreshold = 1024)
 @WebServlet("/FileUploadServl")
 public class FileUploadServl extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
+	private static final String CHARSET = "UTF-8";
+	private static final String ATTACHES_DIR = "c:\\temp";
 
-	private boolean isMultipart;
-	private String filePath;
-	private int maxFileSize = 50 * 1024;
-	private int maxMemSize = 4 * 1024;
-	private File file;
-
-	public void init() {
-		// Get the file location where it would be stored.
-		filePath = getServletContext().getInitParameter("file-upload");
+	public FileUploadServl() {
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, java.io.IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		// Check that we have a file upload request
-		isMultipart = ServletFileUpload.isMultipartContent(request);
-		response.setContentType("text/html");
-		java.io.PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding(CHARSET);
+		PrintWriter out = response.getWriter();
+		String contentType = request.getContentType();
 
-		if (!isMultipart) {
-			out.println("<html>");
-			out.println("<head>");
-			out.println("<title>Servlet upload</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<p>No file uploaded</p>");
-			out.println("</body>");
-			out.println("</html>");
-			return;
-		}
+		if (contentType != null && contentType.toLowerCase().startsWith("multipart/")) {
+			Collection<Part> parts = request.getParts();
 
-		DiskFileItemFactory factory = new DiskFileItemFactory();
-
-		// maximum size that will be stored in memory
-		factory.setSizeThreshold(maxMemSize);
-
-		// Location to save data that is larger than maxMemSize.
-		factory.setRepository(new File("c:\\temp"));
-
-		// Create a new file upload handler
-		ServletFileUpload upload = new ServletFileUpload(factory);
-
-		// maximum file size to be uploaded.
-		upload.setSizeMax(maxFileSize);
-
-		try {
-			// Parse the request to get file items.
-			List fileItems = upload.parseRequest(request);
-
-			// Process the uploaded file items
-			Iterator i = fileItems.iterator();
-
-			out.println("<html>");
-			out.println("<head>");
-			out.println("<title>Servlet upload</title>");
-			out.println("</head>");
-			out.println("<body>");
-
-			while (i.hasNext()) {
-				FileItem fi = (FileItem) i.next();
-				if (!fi.isFormField()) {
-					// Get the uploaded file parameters
-					String fieldName = fi.getFieldName();
-					String fileName = fi.getName();
-					String contentType = fi.getContentType();
-					boolean isInMemory = fi.isInMemory();
-					long sizeInBytes = fi.getSize();
-
-					// Write the file
-					if (fileName.lastIndexOf("\\") >= 0) {
-						file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
-					} else {
-						file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
-					}
-					fi.write(file);
-					out.println("Uploaded Filename: " + fileName + "<br>");
+			for (Part part : parts) {
+				System.out.printf("파라미터명 : %s, contentType: %s, size: %d bytes\n", part.getName(),
+						part.getContentType(), part.getSize());
+				String fileName = extractFileName(part.getHeader("Content-Disposition"));
+				System.out.println("submittedFileName: " + part.getSubmittedFileName());
+				if (part.getSize() > 0) {
+					part.write(ATTACHES_DIR + File.separator + fileName);
+					part.delete();
+				} else {
+					String formValue = request.getParameter(part.getName());
+					System.out.printf("name: %s, value: %s \n", part.getName(), formValue);
 				}
 			}
-			out.println("</body>");
-			out.println("</html>");
-		} catch (Exception ex) {
-			System.out.println(ex);
+
+		} else {
+			out.print("<h3>multipart type이 아님</h3>");
+
 		}
+
+	}
+
+	public String extractFileName(String partHeader) {
+		for (String cd : partHeader.split(";")) {
+			if (cd.trim().startsWith("filename")) {
+				String fileName = cd.substring(cd.indexOf("=") + 1).trim().replace("\"", "");
+				int index = fileName.lastIndexOf(File.separator);
+				return fileName.substring(index + 1);
+			}
+
+		}
+		return null;
+
 	}
 
 }
