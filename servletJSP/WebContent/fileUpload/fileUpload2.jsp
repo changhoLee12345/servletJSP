@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="<%= application.getContextPath() %>/FileUploadServ" method="post" enctype="multipart/form-data">
+    <form action="<%= application.getContextPath() %>/FileUploadServl" method="post" enctype="multipart/form-data">
         제목 : <input type="text" name="title" value="title test"><br>
         내용 : <input type="text" name="content" value="content test"><br>
         파일 설명 : <input type="text" name="description" value="file desc"><br>
