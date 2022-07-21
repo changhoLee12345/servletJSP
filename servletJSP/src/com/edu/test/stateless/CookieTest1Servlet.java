@@ -20,6 +20,7 @@ public class CookieTest1Servlet extends HttpServlet {
 
 		Cookie c1 = new Cookie("id", "guest");
 		c1.setPath("/");
+		c1.setMaxAge(-1);
 		resp.addCookie(c1);
 
 		Cookie c2 = new Cookie("code", "0001");

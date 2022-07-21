@@ -1,4 +1,4 @@
-package com.edu.test;
+package com.edu.test.servletconfig;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class InitParamServlet extends HttpServlet {
+
 	String id, passwd;
 
 	public InitParamServlet() {
@@ -25,14 +26,15 @@ public class InitParamServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(this.getServletContext().getContextPath() + req.getRequestURI());
+
+//		System.out.println(this.getServletContext().getContextPath() + req.getRequestURI());
 		System.out.println(req.getServletPath());
 
 		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = resp.getWriter();
-		out.print("<h2>추출 변수</h2>");
-		out.print("<h3>" + id + "</h3>");
-		out.print("<h3>" + passwd + "</h3>");
+		out.print("<h2>서블릿 초기 추출 변수</h2>");
+		out.print("<h3>ID: " + id + "</h3>");
+		out.print("<h3>PASSWD: " + passwd + "</h3>");
 		out.close();
 	}
 
