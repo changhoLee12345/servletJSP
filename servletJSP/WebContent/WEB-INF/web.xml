@@ -27,6 +27,11 @@
 		<filter-class>com.edu.test.filter.FlowFilterOne</filter-class>
 	</filter>
 
+	<filter-mapping>
+		<filter-name>flow1</filter-name>
+		<url-pattern>/second</url-pattern>
+	</filter-mapping>
+
 	<filter>
 		<filter-name>flow2</filter-name>
 		<filter-class>com.edu.test.filter.FlowFilterTwo</filter-class>
@@ -35,11 +40,6 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-
-	<filter-mapping>
-		<filter-name>flow1</filter-name>
-		<url-pattern>/second</url-pattern>
-	</filter-mapping>
 
 	<filter-mapping>
 		<filter-name>flow2</filter-name>
@@ -61,7 +61,7 @@
 
 	<servlet>
 		<servlet-name>servletConfigTest</servlet-name>
-		<servlet-class>com.edu.test.ServletConfigTestServlet</servlet-class>
+		<servlet-class>com.edu.test.servletconfig.ServletConfigTestServlet</servlet-class>
 		<init-param>
 			<param-name>charset</param-name>
 			<param-value>UTF-8</param-value>
@@ -74,7 +74,7 @@
 
 	<servlet>
 		<servlet-name>initParam</servlet-name>
-		<servlet-class>com.edu.test.InitParamServlet</servlet-class>
+		<servlet-class>com.edu.test.servletconfig.InitParamServlet</servlet-class>
 		<init-param>
 			<param-name>id</param-name>
 			<param-value>guest</param-value>

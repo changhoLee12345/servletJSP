@@ -18,7 +18,7 @@ public class ServletContextTest1Servlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		sc = config.getServletContext();
+		sc = config.getServletContext(); // 1. init()메소드를 통해 추출하는 방법.
 	}
 
 	@Override
@@ -26,7 +26,10 @@ public class ServletContextTest1Servlet extends HttpServlet {
 
 		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = resp.getWriter();
-		String location = sc.getInitParameter("contextConfig");
+		ServletContext sc = this.getServletContext(); // 2. HttpServlet을 통해 추출하는 방법.
+		out.println("Context: " + sc + "<br>");
+
+		String location = sc.getInitParameter("contextConfig"); // <context-param> 을 통해 init-param 지정.
 		out.print("Context: " + location + "<br>");
 		String persistent = sc.getInitParameter("contextConfigLocation");
 		out.print("location: " + persistent);
