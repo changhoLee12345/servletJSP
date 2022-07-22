@@ -12,13 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/dispatcher2")
 public class DispatcherTest2Servlet extends HttpServlet {
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ServletConfig sc = this.getServletConfig();
-		System.out.println(sc.getServletName());
+
 		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		out.print("<h3>Dispatcher Test 2</h3>");
 		out.close();
+
 	}
 }

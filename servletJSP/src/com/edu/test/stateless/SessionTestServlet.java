@@ -19,6 +19,7 @@ public class SessionTestServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 
 		String param = req.getParameter("p");
+		param = param == null ? "create" : param;
 		String msg = null;
 		HttpSession session = null;
 
@@ -63,9 +64,13 @@ public class SessionTestServlet extends HttpServlet {
 			}
 
 		} else if (param.equals("replace")) {
-			session = req.getSession();
-			session.setAttribute("msg", "새로운 메세지입니다");
-			msg = "세션 객체에 데이터 등록 완료";
+			session = req.getSession(false);
+			if (session != null) {
+				session.setAttribute("msg", "새로운 메세지입니다");
+				msg = "세션 객체에 데이터 등록 완료";
+			} else {
+				msg = "새로운 값으로 변경할 세션객체가 존지하지 않음.";
+			}
 
 		}
 
