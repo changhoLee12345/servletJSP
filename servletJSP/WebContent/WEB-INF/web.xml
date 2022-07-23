@@ -46,6 +46,26 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<listener>
+		<listener-class>com.edu.test.listener.TestRequestListener
+		</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.edu.test.listener.TestSessionListener
+		</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.edu.test.listener.TestSessionAttributeListener
+		</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.edu.test.listener.TestServletContextListener
+		</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>front</servlet-name>
 		<servlet-class>com.dev.controller.FrontController</servlet-class>
@@ -61,7 +81,8 @@
 
 	<servlet>
 		<servlet-name>servletConfigTest</servlet-name>
-		<servlet-class>com.edu.test.servletconfig.ServletConfigTestServlet</servlet-class>
+		<servlet-class>com.edu.test.servletconfig.ServletConfigTestServlet
+		</servlet-class>
 		<init-param>
 			<param-name>charset</param-name>
 			<param-value>UTF-8</param-value>
@@ -74,7 +95,8 @@
 
 	<servlet>
 		<servlet-name>initParam</servlet-name>
-		<servlet-class>com.edu.test.servletconfig.InitParamServlet</servlet-class>
+		<servlet-class>com.edu.test.servletconfig.InitParamServlet
+		</servlet-class>
 		<init-param>
 			<param-name>id</param-name>
 			<param-value>guest</param-value>
