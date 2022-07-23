@@ -27,19 +27,19 @@
 		<filter-class>com.edu.test.filter.FlowFilterOne</filter-class>
 	</filter>
 
-	<filter-mapping>
-		<filter-name>flow1</filter-name>
-		<url-pattern>/second</url-pattern>
-	</filter-mapping>
-
 	<filter>
 		<filter-name>flow2</filter-name>
 		<filter-class>com.edu.test.filter.FlowFilterTwo</filter-class>
 		<init-param>
-			<param-name>en</param-name>
+			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
+
+	<filter-mapping>
+		<filter-name>flow1</filter-name>
+		<url-pattern>/second</url-pattern>
+	</filter-mapping>
 
 	<filter-mapping>
 		<filter-name>flow2</filter-name>

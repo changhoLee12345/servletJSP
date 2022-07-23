@@ -15,14 +15,14 @@ public class FlowFilterTwo implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		charset = filterConfig.getInitParameter("en");
+		charset = filterConfig.getInitParameter("encoding");
 		System.out.println("init() 호출 ...... two");
 	}
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
-//		req.setCharacterEncoding("UTF-8");
+//		req.setCharacterEncoding("UTF-8"); // <filter>에서 <init-param>으로 설정하는 것이 좋음.
 		req.setCharacterEncoding(charset);
 		System.out.println("doFilter() 호출 전 ...... two");
 		chain.doFilter(req, resp);

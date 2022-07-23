@@ -17,17 +17,20 @@ public class FlowFilterThree implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
+		System.out.println("doFilter() 호출 전 ...... three");
+
 		long startTime = System.currentTimeMillis();
 		chain.doFilter(request, response);
 		long endTime = System.currentTimeMillis();
 		long exeTime = endTime - startTime;
 		System.out.println("running time: " + exeTime + " ms");
 
+		System.out.println("doFilter() 호출 후 ...... three");
 	}
 
 	@Override
 	public void destroy() {
-		System.out.println("destroy() 호출 ...... two");
+		System.out.println("destroy() 호출 ...... three");
 	}
 
 	@Override
