@@ -4,13 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>pageContext</title>
 </head>
 <body>
+	<%! 
+	public void work(String p, PageContext pc) {
+		try {
+			JspWriter out = pc.getOut();
+			if (p.equals("include")) {
+				out.println("-- include 전 -- <br>");
+				pc.include("test.jsp");
+				out.println("-- include 후 -- <br>");
+			} else if (p.equals("forward")) {
+				pc.forward("test.jsp");
+			}
+		} catch (Exception e) {
+			System.out.println("오류 발생!!");
+		}
+	}
+	%>
 	<%
-	request.setAttribute("data", "userdate");
-	String path = "pageContext.jsp";
-	pageContext.forward(path);
+	String p = request.getParameter("p");
+	this.work(p, pageContext);
 	%>
 </body>
 </html>

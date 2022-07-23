@@ -20,7 +20,7 @@
 	<%
 	//out.print("10000000");
 	//out.print(1000000000);
-	for (int i = 0; i < 10000; i++) {
+	for (int i = 0; i < 20; i++) {
 		out.print("{bufferSize: " + out.getRemaining() + "}   ");
 	}
 	//out.print(new java.io.File("/src"));

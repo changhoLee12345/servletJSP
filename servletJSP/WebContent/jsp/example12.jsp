@@ -1,3 +1,4 @@
+<%@page import="java.util.Set"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,11 +11,11 @@
 	server:
 	<%=application.getServerInfo()%><br> version:
 	<%=application.getMajorVersion()%>.<%=application.getMinorVersion()%><br>
-	realPath:
-	<%=application.getRealPath("/")%><br> contextPath:<%=application.getContextPath()%>
+	realPath: <%=application.getRealPath("/")%><br>
+	contextPath:<%=application.getContextPath()%><br>
 	<h3>/edu list</h3>
 	<%
-	java.util.Set<String> list = application.getResourcePaths("/");
+	Set<String> list = application.getResourcePaths("/");
 	if (list != null) {
 		Object[] ary = list.toArray();
 		for (int i = 0; i < ary.length; i++) {
