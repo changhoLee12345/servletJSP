@@ -22,10 +22,10 @@
 	Connection conn = ds.getConnection();
 
 	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery("select * from employees");
+	ResultSet rs = stmt.executeQuery("select * from departments order by 1");
 
 	while (rs.next()) {
-		out.print("<br>" + rs.getString("first_name") + ", " + rs.getString("last_name"));
+		out.print("<br>" + rs.getString("department_id") + ", " + rs.getString("department_name"));
 	}
 	rs.close();
 	stmt.close();

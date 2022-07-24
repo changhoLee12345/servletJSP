@@ -27,24 +27,44 @@
 		<filter-class>com.edu.test.filter.FlowFilterOne</filter-class>
 	</filter>
 
-	<filter-mapping>
-		<filter-name>flow1</filter-name>
-		<url-pattern>/second</url-pattern>
-	</filter-mapping>
-
 	<filter>
 		<filter-name>flow2</filter-name>
 		<filter-class>com.edu.test.filter.FlowFilterTwo</filter-class>
 		<init-param>
-			<param-name>en</param-name>
+			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
 
 	<filter-mapping>
+		<filter-name>flow1</filter-name>
+		<url-pattern>/second</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
 		<filter-name>flow2</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+	<listener>
+		<listener-class>com.edu.test.listener.TestRequestListener
+		</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.edu.test.listener.TestSessionListener
+		</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.edu.test.listener.TestSessionAttributeListener
+		</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.edu.test.listener.TestServletContextListener
+		</listener-class>
+	</listener>
 
 	<servlet>
 		<servlet-name>front</servlet-name>
@@ -61,7 +81,8 @@
 
 	<servlet>
 		<servlet-name>servletConfigTest</servlet-name>
-		<servlet-class>com.edu.test.servletconfig.ServletConfigTestServlet</servlet-class>
+		<servlet-class>com.edu.test.servletconfig.ServletConfigTestServlet
+		</servlet-class>
 		<init-param>
 			<param-name>charset</param-name>
 			<param-value>UTF-8</param-value>
@@ -74,7 +95,8 @@
 
 	<servlet>
 		<servlet-name>initParam</servlet-name>
-		<servlet-class>com.edu.test.servletconfig.InitParamServlet</servlet-class>
+		<servlet-class>com.edu.test.servletconfig.InitParamServlet
+		</servlet-class>
 		<init-param>
 			<param-name>id</param-name>
 			<param-value>guest</param-value>

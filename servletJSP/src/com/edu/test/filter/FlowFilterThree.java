@@ -12,9 +12,12 @@ import javax.servlet.annotation.WebFilter;
 
 @WebFilter(filterName = "timer", urlPatterns = "/third")
 public class FlowFilterThree implements Filter {
+
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+
+		System.out.println("doFilter() 호출 전 ...... three");
 
 		long startTime = System.currentTimeMillis();
 		chain.doFilter(request, response);
@@ -22,18 +25,18 @@ public class FlowFilterThree implements Filter {
 		long exeTime = endTime - startTime;
 		System.out.println("running time: " + exeTime + " ms");
 
+		System.out.println("doFilter() 호출 후 ...... three");
+
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("destroy() 호출 ...... three");
 	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
-		
+		System.out.println("init() 호출 ...... three");
 	}
 
 }

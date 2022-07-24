@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/bookReg")
+@WebServlet("/bookTest1")
 public class BookTest1Servlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		req.setCharacterEncoding("UTF-8");
@@ -29,8 +30,9 @@ public class BookTest1Servlet extends HttpServlet {
 
 		req.setAttribute("book", book);
 
-		RequestDispatcher rd = req.getRequestDispatcher("bookOutput");
-		rd = req.getRequestDispatcher("/WEB-INF/bookInfo.jsp");
+		RequestDispatcher rd;
+		rd = req.getRequestDispatcher("bookTest2");
+//		rd = req.getRequestDispatcher("/WEB-INF/bookInfo.jsp");
 		rd.forward(req, resp);
 		out.close();
 	}

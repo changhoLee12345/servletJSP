@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/context3")
 public class ServletContextTest3Servlet extends HttpServlet {
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
@@ -28,7 +29,7 @@ public class ServletContextTest3Servlet extends HttpServlet {
 		obj2.setStr("객체 공유 테스트 - 2");
 		obj2.setCount(200);
 		sc.setAttribute("data2", obj2);
-		
+
 		out.print("ServletContext객체에 데이터 등록 완료");
 		out.close();
 	}

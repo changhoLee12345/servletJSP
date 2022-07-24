@@ -4,8 +4,8 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>logInOut.jsp</title>
+	<meta charset="UTF-8">
+	<title>logInOut.jsp</title>
 </head>
 
 <body>

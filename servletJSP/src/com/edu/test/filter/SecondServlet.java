@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/second")
 public class SecondServlet extends HttpServlet {
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("secondServlet");
@@ -19,4 +20,5 @@ public class SecondServlet extends HttpServlet {
 		out.print("<body><h2>Have nice day!!</h2></body></html>");
 		out.close();
 	}
+
 }

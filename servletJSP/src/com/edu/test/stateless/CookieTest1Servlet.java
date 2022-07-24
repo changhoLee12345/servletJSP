@@ -21,7 +21,7 @@ public class CookieTest1Servlet extends HttpServlet {
 		Cookie c1 = new Cookie("id", "guest");
 		c1.setPath("/");
 		c1.setMaxAge(-1);
-		resp.addCookie(c1);
+		resp.addCookie(c1); // 클라이언트에 전송.
 
 		Cookie c2 = new Cookie("code", "0001");
 		c2.setMaxAge(3 * 60 * 60);
