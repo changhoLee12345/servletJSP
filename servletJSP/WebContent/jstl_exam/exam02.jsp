@@ -19,4 +19,8 @@
 "${b.author }"
 <br>
 
+<jsp:useBean id="bean" class="com.edu.beans.BookBean"></jsp:useBean>
+<c:set target="${bean }" property="title" value="beantitle"></c:set>
+<jsp:getProperty name="bean" property="title"></jsp:getProperty><br>
+
 <a href="examList.jsp">리스트</a>

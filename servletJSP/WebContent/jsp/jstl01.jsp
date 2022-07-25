@@ -17,13 +17,14 @@
 
 <script>
 	$(document).ready(function() {
-		$('#example').DataTable();
+		//$('#example').DataTable();
 	});
 </script>
 </head>
 
 <body>
-	<sql:query var="rs" dataSource="jdbc/myoracle">select employee_id, first_name, last_name, email from employees
+	<sql:query var="rs" dataSource="jdbc/myoracle">
+		select employee_id, first_name, last_name, email from employees
 	</sql:query>
 
 	<table border="1" id="example" class="display" style="width: 90%">
@@ -35,6 +36,15 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach var="row" items="${rs.rows }">
+				<tr>
+					<td><c:out value="${row.employee_Id }"></c:out></td>
+					<td><c:out value="${row.first_Name }"></c:out></td>
+					<td><c:out value="${row.last_Name }"></c:out></td>
+					<td><c:out value="${row.email }"></c:out></td>
+				</tr>
+			</c:forEach>
+				<tr><td colspan="4">==========================new =========================</td></tr>
 			<c:forEach var="row" items="${data }">
 				<tr>
 					<td><c:out value="${row.employeeId }"></c:out></td>

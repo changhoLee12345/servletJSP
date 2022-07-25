@@ -15,9 +15,9 @@
 	bean.setTitle("title");
 	bean.setPublisher("publisher");
 
-	bean.setAuthor(request.getParameter("a"));
-	bean.setTitle(request.getParameter("b"));
-	bean.setPublisher(request.getParameter("c"));
+	bean.setAuthor(request.getParameter("author"));
+	bean.setTitle(request.getParameter("title"));
+	bean.setPublisher(request.getParameter("publisher"));
 	%>
 
 	<%=bean.getAuthor()%><br>
