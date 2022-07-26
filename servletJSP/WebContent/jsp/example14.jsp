@@ -9,7 +9,7 @@
 <body>
 	<%
 	String path = "example13.jsp";
-	path = request.getParameter("page");
+	//path = request.getParameter("page");
 	request.setAttribute("path", path);
 	%>
 	<jsp:forward page="${param.page }"></jsp:forward>

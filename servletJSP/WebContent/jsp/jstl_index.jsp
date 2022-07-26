@@ -8,6 +8,6 @@
 </head>
 <body>
 	<a href="../jstlServlet01">jstl01</a>
-	
+	<p>${path }</p>
 </body>
 </html>
