@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ public class FrontController extends HttpServlet {
 		charset = config.getInitParameter("charset");
 
 		list = new HashMap<String, Controller>();
+		list.put("/main.do", new MainController());
 		list.put("/memberDelete.do", new MemberDeleteController());
 		list.put("/memberInsert.do", new MemberInsertController());
 		list.put("/memberList.do", new MemberListController());

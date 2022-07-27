@@ -19,7 +19,7 @@ public class HttpUtil {
 		}
 	}
 
-	public static void getJson(HttpServletResponse resp, Object jsonObj) {
+	public static void json(HttpServletRequest request, HttpServletResponse resp, Object jsonObj) {
 		try {
 			PrintWriter out = resp.getWriter();
 			out.print(jsonObj);

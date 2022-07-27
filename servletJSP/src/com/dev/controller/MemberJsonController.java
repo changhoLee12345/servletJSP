@@ -36,12 +36,13 @@ public class MemberJsonController implements Controller {
 
 		}
 
-		try {
-			PrintWriter out = response.getWriter();
-			out.print(ary);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			PrintWriter out = response.getWriter();
+//			out.print(ary);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		HttpUtil.json(request, response, ary);
 	}
 
 }

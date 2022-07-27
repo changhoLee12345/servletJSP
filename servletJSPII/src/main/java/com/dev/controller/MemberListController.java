@@ -17,7 +17,7 @@ public class MemberListController implements Controller {
 
 		request.setAttribute("list", list);
 
-		HttpUtil.forward(request, response, "memberResult/memberListOutput.jsp");
+		HttpUtil.forward(request, response, "member/memberListOutput.tiles");
 	}
 
 }

@@ -16,11 +16,11 @@ public class MemberSearchController implements Controller {
 		String path = null;
 
 		if (job.equals("search")) {
-			path = "memberView/memberSearch.jsp";
+			path = "member/memberSearch.tiles";
 		} else if (job.equals("update")) {
-			path = "memberView/memberUpdate.jsp";
+			path = "member/memberUpdate.tiles";
 		} else if (job.equals("delete")) {
-			path = "memberView/memberDelete.jsp";
+			path = "member/memberDelete.tiles";
 		}
 
 		if (id.isEmpty()) {
@@ -40,7 +40,7 @@ public class MemberSearchController implements Controller {
 		request.setAttribute("member", member);
 
 		if (job.equals("search")) {
-			path = "memberResult/memberSearchOutput.jsp";
+			path = "member/memberSearchOutput.tiles";
 		}
 
 		HttpUtil.forward(request, response, path);
