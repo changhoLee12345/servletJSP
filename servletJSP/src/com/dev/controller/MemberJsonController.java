@@ -13,6 +13,8 @@ import com.dev.service.MemberService;
 import com.dev.vo.MemberVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class MemberJsonController implements Controller {
 
@@ -36,10 +38,15 @@ public class MemberJsonController implements Controller {
 			ary.add(obj);
 
 		}
-		
+
 		Gson gson = new GsonBuilder().create();
+		JsonObject jobj = new JsonObject();
+		JsonArray jary = new JsonArray();
+		jobj.addProperty("name", "hong");
+		jary.add(jobj);
 		try {
 			response.getWriter().print(gson.toJson(list));
+			response.getWriter().print(jary);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
