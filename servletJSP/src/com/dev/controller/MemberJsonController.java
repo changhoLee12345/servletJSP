@@ -1,7 +1,6 @@
 package com.dev.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +11,8 @@ import org.json.simple.JSONObject;
 
 import com.dev.service.MemberService;
 import com.dev.vo.MemberVO;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class MemberJsonController implements Controller {
 
@@ -35,6 +36,14 @@ public class MemberJsonController implements Controller {
 			ary.add(obj);
 
 		}
+		
+		Gson gson = new GsonBuilder().create();
+		try {
+			response.getWriter().print(gson.toJson(list));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 //		try {
 //			PrintWriter out = response.getWriter();
@@ -42,7 +51,7 @@ public class MemberJsonController implements Controller {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		HttpUtil.json(request, response, ary);
+//		HttpUtil.json(request, response, ary);
 	}
 
 }

@@ -42,15 +42,17 @@ public class MemberDAO {
 
 			Properties prop = new Properties();
 			String path = null;
-			path = MemberDAO.class.getResource("/com/dev/database.properties").getPath();
-			String url = prop.getProperty("url");
-			String id = prop.getProperty("user");
-			String pass = prop.getProperty("passwd");
+			path = MemberDAO.class.getResource("../database.properties").getPath();
+			System.out.println(path);
 
 			try {
 				path = URLDecoder.decode(path, "UTF-8");
 				prop.load(new FileReader(path));
+				String url = prop.getProperty("url");
+				String id = prop.getProperty("user");
+				String pass = prop.getProperty("passwd");
 				Class.forName(prop.getProperty("driver"));
+				System.out.println(url + "," + id + "," + pass);
 				conn = DriverManager.getConnection(url, id, pass);
 			} catch (ClassNotFoundException | SQLException | IOException e1) {
 				e1.printStackTrace();
@@ -173,7 +175,7 @@ public class MemberDAO {
 	// 리스트
 	public List<MemberVO> memberList() {
 		conn = connect();
-		String sql = "select id, name, passwd, email from member order by 1";
+		String sql = "select id, name, passwd, mail from member order by 1";
 		List<MemberVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -181,7 +183,7 @@ public class MemberDAO {
 			while (rs.next()) {
 				MemberVO member = new MemberVO();
 				member.setId(rs.getString("id"));
-				member.setMail(rs.getString("email"));
+				member.setMail(rs.getString("mail"));
 				member.setName(rs.getString("name"));
 				member.setPasswd(rs.getString("passwd"));
 				list.add(member);
