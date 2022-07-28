@@ -4,15 +4,15 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="home" template="/WEB-INF/sbadmin/template.jsp">
+	<definition name="home" template="/WEB-INF/tiles/sbadmin/template.jsp">
 		<put-attribute name="title" value="Welcome to Home!!" />
-		<put-attribute name="head" value="/WEB-INF/sbadmin/head.jsp" />
-		<put-attribute name="menu" value="/WEB-INF/sbadmin/menu.jsp" />
-		<put-attribute name="body" value="/WEB-INF/sbadmin/home.jsp" />
-		<put-attribute name="foot" value="/WEB-INF/sbadmin/foot.jsp" />
+		<put-attribute name="head" value="/WEB-INF/tiles/sbadmin/head.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/tiles/sbadmin/menu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/tiles/sbadmin/home.jsp" />
+		<put-attribute name="foot" value="/WEB-INF/tiles/sbadmin/foot.jsp" />
 	</definition>
 
 	<definition name="WILDCARD:*/*" extends="home">
-		<put-attribute name="body" value="/WEB-INF/job/{1}/{2}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp" />
 	</definition>
 </tiles-definitions>
