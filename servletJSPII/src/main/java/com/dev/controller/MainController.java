@@ -8,7 +8,7 @@ public class MainController implements Controller {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		HttpUtil.forward(request, response, "sbadmin/home.tiles");
+		HttpUtil.forward(request, response, "main/main.tiles");
 	}
 
 }
