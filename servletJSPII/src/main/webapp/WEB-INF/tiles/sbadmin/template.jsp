@@ -14,19 +14,20 @@
         <link href="sbadmin/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
+
     <body class="sb-nav-fixed">
 
 		<!-- head -->
-		<tiles:insertAttribute name="head"></tiles:insertAttribute>
+		<tiles:insertAttribute name="head" />
 		
         <div id="layoutSidenav">
-			<div id="layoutSidenav_content">
             <!-- menu -->
-            <tiles:insertAttribute name="menu"></tiles:insertAttribute>
+            <tiles:insertAttribute name="menu" />
             
+			<div id="layoutSidenav_content">
             <!-- content -->
-            <tiles:insertAttribute name="body"></tiles:insertAttribute>
-            <tiles:insertAttribute name="foot"></tiles:insertAttribute>
+            <tiles:insertAttribute name="body" />
+            <tiles:insertAttribute name="foot" />
             </div>
         </div>
 
