@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dev.mybatisdb.memberMapper">
+
+	<select id="getMember" parameterType="string" resultType="member">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
+
+	<select id="getMemberList" resultType="map">
+		SELECT * FROM member ORDER BY 1 DESC
+	</select>
+
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO member VALUES (#{id},#{name},#{passwd},#{mail})
+	</insert>
+
+	<update id="updateMember" parameterType="member">
+		UPDATE member
+		SET name=#{name}
+		   ,passd=#{passd}
+		   ,mail=#{mail}
+		WHERE id=#{id}
+	</update>
+
+	<delete id="deleteBoard" parameterType="string">
+		DELETE FROM member WHERE id=#{id}
+	</delete>
+
+<!-- 	<resultMap type="#modelname" id="YourResultSet">
+		<id property="param1" column="columnname1" />
+		<result property="param2" column="columnname2" />
+		<result property="param3" column="columnname3" />
+	</resultMap>
+ -->
+</mapper>
